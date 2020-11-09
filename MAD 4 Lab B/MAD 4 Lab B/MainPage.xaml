@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MAD_4_Lab_B.MainPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Editor" x:Key="editorStyle">
+                <Setter Property="TextColor" Value="DarkCyan"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="20,35,20,25">
+        <Label HorizontalOptions="Center" 
+               BindingContext="{x:Reference Name=slider}"
+               Rotation="{Binding Path=Value}"
+               >
+            <Label.FormattedText>
+            <FormattedString>
+                <Span Text="This sentence contains " />
+                <Span Text="words that are emphasized, "
+                  FontAttributes="Italic" />
+                <Span Text="and underlined."
+                  TextDecorations="Underline" />
+            </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Slider x:Name="slider"
+                Maximum="360"
+                VerticalOptions="CenterAndExpand" />
+
+        <Entry Placeholder="Enter password"
+               BindingContext="{x:Reference Name=slider}"
+               Rotation="{Binding Path=Value}"
+               MaxLength="15"
+               IsSpellCheckEnabled="false"
+               IsTextPredictionEnabled="false"
+               IsPassword="true" />
+        
+        <Editor Placeholder="Editor that shows all lines"
+                Style="{StaticResource editorStyle}"
+                BindingContext="{x:Reference Name=slider}"
+                Rotation="{Binding Path=Value}"
+                VerticalOptions="Center"
+                HorizontalOptions="Fill"
+                AutoSize="TextChanges"/>
+
+        <Button 
+        BindingContext="{x:Reference Name=slider}"
+        Rotation="{Binding Path=Value}"
+        Text="Click me"
+        Clicked="OnButtonClicked"
+        TextColor="yellow"
+        BackgroundColor="blue"
+        BorderColor="green"
+        BorderWidth="5"
+        CornerRadius="5"
+        WidthRequest="150"
+        HeightRequest="75" />
+
+    </StackLayout>
+
+</ContentPage>
